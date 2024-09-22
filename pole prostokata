@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int a, b, c, d;
+int main()
+{
+    cout << "Podaj pierwszy bok: ";
+    cin >> a;
+    cout << "Podaj drugi bok: ";
+    cin >> b;
+    c = (a*2)+(b*2);
+    cout << "Obwód prostokata: "<< c <<endl;
+    d = a*b;
+    cout << "Pole prostokata: "<< d <<endl;
+    return 0;
+}

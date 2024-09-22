@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int n, a, p = 0, np = 0;
+
+int main() {
+    cout << "Podaj ile liczb: ";
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cout << "Podaj liczbe: ";
+        cin >> a;
+        if (a % 2 == 0) 
+            p++;
+        else 
+            np++;
+    }
+    cout << "Parzystych: " << p << endl;
+    cout << "Nieparzystych: " << np << endl;
+    return 0;
+}

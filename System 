@@ -1,0 +1,86 @@
+#include<iostream>
+using namespace std;
+
+float a, b;
+char dane, mat;
+
+int main() {
+    cout << "Witamy użytkownika! " << endl;
+    cout << "Stwórz hasło: "; 
+    cin >> a;
+    cout << "Podaj hasło: ";
+    cin >> b;
+
+    if (a == b) {
+        cout << "Gratulacje" << endl;
+        cout << "System został odblokowany" << endl;
+    } 
+    else {
+        cout << "Źle" << endl;
+        cout << "System został zamknięty!" << endl;
+        return 0;
+    }
+
+    // Menu 
+    cout << "Wybierz co chcesz zrobić" << endl;
+    cout << "T = Informacje o Tworcy" << endl;
+    cout << "R = Informacje o Systemie" << endl;
+    cout << "M = Matematyka" << endl;
+    
+    cin >> dane;  
+
+    if (dane == 'T') {
+        cout << "Nazywam się Tomek" << endl;
+        cout << "Mam 16 lat" << endl;
+        cout << "Ucze sie na profilu informatycznym" << endl;
+        cout << "Lubie grać w tenisa stołowego i siatkowe" << endl;
+        return 0;
+    } 
+    
+    if (dane == 'R') {
+        cout << "System powstał 12 października 2024r" << endl;
+        cout << "Został stworzony w wolnej chwili" << endl;
+        cout << "Nazwa to:Cplusplus" << endl;
+        return 0;
+        
+    } 
+    if(dane == 'M') {
+    cout << "Wybierz opcje" << endl;
+    cout << "P = Pole i obwod prostokąta" << endl;
+    cout << "C = Pole i obwod trójkąta" << endl;
+    }
+    
+    cin >> mat;
+    
+    if(mat == 'P') {
+    int a,b,pole,obwod;
+    cout << "Podaj pierwszy bok prostokąta" << endl;
+    cin >> a;
+    cout << "Podaj drugi bok prostokąta" << endl;
+    cin >> b;
+    pole = a * b;
+    obwod = (2*a)+ (2*b);
+    cout << "Pole prostokąta wynosi: " << pole << endl;
+    cout << "Obwod prostokąta wynosi: " << obwod << endl;
+    return 0;
+    }
+    
+    if(mat == 'C') {
+    int a, b, c, h, pole, obwod;
+    cout << "Podaj pierwszy bok trójkąta" << endl;
+    cin >> a;
+    cout << "Podaj drugi bok trójkąta" << endl;
+    cin >> b;
+    cout << "Podaj trzeci bok trójkąta" << endl;
+    cin >> c;
+    cout << "Podaj wysokosc trójkąta" << endl;
+    cin >> h;
+    pole = (a*h)/2;
+    obwod = a + b + c;
+    cout << "Pole trójkąta wynosi: " << pole << endl;
+    cout << "Obwód trójkąta wynosi: " << obwod << endl;
+    return 0;
+    }
+    
+    return 0;
+}

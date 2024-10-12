@@ -48,6 +48,8 @@ int main() {
     cout << "Wybierz opcje" << endl;
     cout << "P = Pole i obwod prostokąta" << endl;
     cout << "C = Pole i obwod trójkąta" << endl;
+    cout << "Y = Mnożenie" << endl;
+    cout << "D = Dzielenie" << endl;
     }
     
     cin >> mat;
@@ -62,6 +64,30 @@ int main() {
     obwod = (2*a)+ (2*b);
     cout << "Pole prostokąta wynosi: " << pole << endl;
     cout << "Obwod prostokąta wynosi: " << obwod << endl;
+    return 0;
+    }
+    
+    if(mat == 'Y'){
+    int a, b, suma;
+    cout << "Mnożenie" << endl;
+    cout << "Podaj pierwsza liczbe -> " << endl;
+    cin >> a;
+    cout << "Podaj druga liczbe -> " << endl;
+    cin >> b;
+    suma = a * b;
+    cout << "Wynik to -> " << suma << endl;
+    return 0;
+    }
+    
+    if(mat == 'D'){
+    int a, b, suma;
+    cout << "Dzielenie" << endl;
+    cout << "Podaj pierwsza liczbe -> " << endl;
+    cin >> a;
+    cout << "Podaj druga liczbe -> " << endl;
+    cin >> b;
+    suma = a / b;
+    cout << "Wynik to -> " << suma << endl;
     return 0;
     }
     

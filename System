@@ -1,112 +1,170 @@
-#include<iostream>
+#include <stdafx.h>
+#include <iostream> 
+#include <cstdlib>
+#include <string>
 using namespace std;
 
-float a, b;
-char dane, mat;
+void login(string &admin, string &adminh, bool &zalogowany) {
+	cout << "Podaj Login Admina:" << endl;
+	cin >> admin;
+	cout << "Podaj Haslo Admina:" << endl;
+	cin >> adminh;
+
+	if (admin == "admin" && adminh == "admin") {
+		zalogowany = true;
+		cout << "Witamy w Systemie - Admin" << endl;
+	}
+	else {
+		cout << "Niepoprawny login" << endl;
+	}
+}
+
+void createUser(string &log1, string &haslo1, bool &zalogowany) {
+	cout << "Stwórz login: ";
+	cin >> log1;
+	cout << "Stwórz hasło: ";
+	cin >> haslo1;
+
+	string log2, haslo2;
+	system("cls"); 
+
+	cout << "Podaj login: ";
+	cin >> log2;
+	cout << "Podaj hasło: ";
+	cin >> haslo2;
+
+	if (haslo1 == haslo2 && log1 == log2) {
+		zalogowany = true;
+		cout << "Gratulacje, hasło zostało utworzone." << endl;
+		cout << "System został odblokowany" << endl;
+	}
+	else {
+		cout << "Hasła nie pasują." << endl;
+	}
+}
 
 int main() {
-    cout << "Witamy użytkownika! " << endl;
-    cout << "Stwórz hasło: "; 
-    cin >> a;
-    cout << "Podaj hasło: ";
-    cin >> b;
+	string admin, adminh;
+	string haslo1, log1;
+	char dane, mat;
+	bool zalogowany = false;
 
-    if (a == b) {
-        cout << "Gratulacje" << endl;
-        cout << "System został odblokowany" << endl;
-    } 
-    else {
-        cout << "Źle" << endl;
-        cout << "System został zamknięty!" << endl;
-        return 0;
-    }
+	while (true) {
+		
+		if (!zalogowany) {
+			char wybor;
+			cout << "Witamy uzytkownika lub admina!" << endl;
+			cout << "Podaj co chcesz zrobic" << endl;
+			cout << "L = Login (admin)" << endl;
+			cout << "N = Nowy Użytkownik (usunie się po restarcie systemu)" << endl;
+			cout << "O = Zakończ program" << endl; 
+			cin >> wybor;
 
-    // Menu 
-    cout << "Wybierz co chcesz zrobić" << endl;
-    cout << "T = Informacje o Tworcy" << endl;
-    cout << "R = Informacje o Systemie" << endl;
-    cout << "M = Matematyka" << endl;
-    
-    cin >> dane;  
+			if (wybor == 'L') {
+				login(admin, adminh, zalogowany);
+			}
+			else if (wybor == 'N') {
+				createUser(log1, haslo1, zalogowany);
+			}
+			else if (wybor == 'O') {
+				return 0; 
+			}
+			else {
+				cout << "Niewłaściwy wybór." << endl;
+				continue; // niby nie trzeba ale zawsze warto ~~ Tomasz
+			}
+		}
 
-    if (dane == 'T') {
-        cout << "Nazywam się Tomek" << endl;
-        cout << "Mam 16 lat" << endl;
-        cout << "Ucze sie na profilu informatycznym" << endl;
-        cout << "Lubie grać w tenisa stołowego i siatkowe" << endl;
-        return 0;
-    } 
-    
-    if (dane == 'R') {
-        cout << "System powstał 12 października 2024r" << endl;
-        cout << "Został stworzony w wolnej chwili" << endl;
-        cout << "Nazwa to:Cplusplus" << endl;
-        return 0;
-        
-    } 
-    if(dane == 'M') {
-    cout << "Wybierz opcje" << endl;
-    cout << "P = Pole i obwod prostokąta" << endl;
-    cout << "C = Pole i obwod trójkąta" << endl;
-    cout << "Y = Mnożenie" << endl;
-    cout << "D = Dzielenie" << endl;
-    }
-    
-    cin >> mat;
-    
-    if(mat == 'P') {
-    int a,b,pole,obwod;
-    cout << "Podaj pierwszy bok prostokąta" << endl;
-    cin >> a;
-    cout << "Podaj drugi bok prostokąta" << endl;
-    cin >> b;
-    pole = a * b;
-    obwod = (2*a)+ (2*b);
-    cout << "Pole prostokąta wynosi: " << pole << endl;
-    cout << "Obwod prostokąta wynosi: " << obwod << endl;
-    return 0;
-    }
-    
-    if(mat == 'Y'){
-    int a, b, suma;
-    cout << "Mnożenie" << endl;
-    cout << "Podaj pierwsza liczbe -> " << endl;
-    cin >> a;
-    cout << "Podaj druga liczbe -> " << endl;
-    cin >> b;
-    suma = a * b;
-    cout << "Wynik to -> " << suma << endl;
-    return 0;
-    }
-    
-    if(mat == 'D'){
-    int a, b, suma;
-    cout << "Dzielenie" << endl;
-    cout << "Podaj pierwsza liczbe -> " << endl;
-    cin >> a;
-    cout << "Podaj druga liczbe -> " << endl;
-    cin >> b;
-    suma = a / b;
-    cout << "Wynik to -> " << suma << endl;
-    return 0;
-    }
-    
-    if(mat == 'C') {
-    int a, b, c, h, pole, obwod;
-    cout << "Podaj pierwszy bok trójkąta" << endl;
-    cin >> a;
-    cout << "Podaj drugi bok trójkąta" << endl;
-    cin >> b;
-    cout << "Podaj trzeci bok trójkąta" << endl;
-    cin >> c;
-    cout << "Podaj wysokosc trójkąta" << endl;
-    cin >> h;
-    pole = (a*h)/2;
-    obwod = a + b + c;
-    cout << "Pole trójkąta wynosi: " << pole << endl;
-    cout << "Obwód trójkąta wynosi: " << obwod << endl;
-    return 0;
-    }
-    
-    return 0;
+		if (zalogowany) {
+			system("cls");
+			cout << "Wybierz co chcesz zrobić" << endl;
+			cout << "T = Informacje o Tworcy" << endl;
+			cout << "R = Informacje o Systemie" << endl;
+			cout << "M = Matematyka" << endl;
+			cout << "E = Wyloguj" << endl;
+			cout << "Z = Zakończ program" << endl;
+			cin >> dane;
+
+			if (dane == 'T') {
+				cout << "Nazywam się Tomek" << endl;
+				cout << "Mam 17 lat" << endl;
+				cout << "Uczę się na profilu informatycznym" << endl;
+				cout << "Lubię grać w tenisa stołowego i siatkówkę" << endl;
+			}
+			else if (dane == 'R') {
+				cout << "System powstał 12 października 2024r" << endl; 
+				cout << "Został stworzony w wolnej chwili" << endl;
+				cout << "Nazwa to: Cplusplus" << endl;
+			}
+			else if (dane == 'M') {
+				cout << "Wybierz opcję" << endl;
+				cout << "P = Pole i obwód prostokąta" << endl;
+				cout << "C = Pole i obwód trójkąta" << endl;
+				cout << "Y = Mnożenie" << endl;
+				cout << "D = Dzielenie" << endl;
+
+				cin >> mat;
+
+				if (mat == 'P') {
+					int a, b;
+					cout << "Podaj pierwszy bok prostokąta" << endl;
+					cin >> a;
+					cout << "Podaj drugi bok prostokąta" << endl;
+					cin >> b;
+					cout << "Pole prostokąta wynosi: " << a * b << endl;
+					cout << "Obwód prostokąta wynosi: " << (2 * a) + (2 * b) << endl;
+				}
+				else if (mat == 'Y') {
+					int a, b;
+					cout << "Podaj pierwszą liczbę -> ";
+					cin >> a;
+					cout << "Podaj drugą liczbę -> ";
+					cin >> b;
+					cout << "Wynik to -> " << a * b << endl;
+				}
+				else if (mat == 'D') {
+					int a, b;
+					cout << "Podaj pierwszą liczbę -> ";
+					cin >> a;
+					cout << "Podaj drugą liczbę -> ";
+					cin >> b;
+					if (b != 0) {
+						cout << "Wynik to -> " << static_cast<double>(a) / b << endl; 
+					}
+					else {
+						cout << "Błąd: Nie można dzielić przez zero!" << endl;
+					}
+				}
+				else if (mat == 'C') {
+					int a, b, c, h;
+					cout << "Podaj pierwszy bok trójkąta" << endl;
+					cin >> a;
+					cout << "Podaj drugi bok trójkąta" << endl;
+					cin >> b;
+					cout << "Podaj trzeci bok trójkąta" << endl;
+					cin >> c;
+					cout << "Podaj wysokość trójkąta" << endl;
+					cin >> h;
+					cout << "Pole trójkąta wynosi: " << (a * h) / 2 << endl;
+					cout << "Obwód trójkąta wynosi: " << (a + b + c) << endl;
+				}
+				else {
+					cout << "Niewłaściwy wybór matematyczny." << endl;
+				}
+			}
+			else if (dane == 'E') {
+				zalogowany = false;
+				cout << "Wylogowano pomyślnie." << endl;
+			}
+			else if (dane == 'Z') {
+				cout << "Dziękujemy za korzystanie z systemu. Do zobaczenia!" << endl;
+				break;
+			}
+			else {
+				cout << "Niewłaściwy wybór." << endl;
+			}
+		}
+	}
+
+	return 0;
 }
